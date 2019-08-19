@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{cdbf468d-6281-47a7-b3dd-05ae6d65b999}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>QisListDevices.py</StartupFile>
+    <StartupFile>DeviceCapabilities.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -18,7 +18,7 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="QisListDevices.py" />
+    <Compile Include="DeviceCapabilities.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="quarchpy\" />

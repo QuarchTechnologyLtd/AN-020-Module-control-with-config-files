@@ -1,18 +1,18 @@
 '''
-AN-012 - Application note demonstrating control of power modules via QIS
+AN-020 - Application note demonstrating module control with configuration files
 
-This example checks everything is working by connecting to QIS and listing the devices
-available for connection.  This verifies QuarchPy, QIS and the connection to the module(s)
+This example shows how to use the configuration file data to find the capabilities of a Quarch module.
+The script uses the selected module to find the config file and then parses it.  We then print the various
+sections to the terminal.
 
 ########### VERSION HISTORY ###########
 
-14/12/2016 - Iain Robertson - Minor edits for formatting and layout
-24/04/2018 - Andy Norrie    - Updated for QuarchPy
+19/08/2019 - Andy Norrie    - Initial release
 
 ########### INSTRUCTIONS ###########
 
-For localhost QIS, run the example as it is.
-For remote QIS, comment out the 'openQis()' command and specify the IP:Port in the qusInterface(...) command
+Update to the latest quarcypy (python -m pip install quarchpy --upgrade) to get the latest configuration files
+Connect any Quarch breaker/hot-plug module and run the script
 
 ####################################
 '''
@@ -37,6 +37,7 @@ print ("")
 print ("")
 
 # Prints a list of top level capabilities that this module has (differentiating from a 'base' module)
+# This is useful to check if a module supports features such as driving and monitoring
 print ("GENERAL CAPABILITIES:")
 for key, value in dev_caps.get_general_capabilities().items():
     print(key + " = " + value)
@@ -44,6 +45,7 @@ print ("")
 print ("")
 
 # Print the list of signals on the module, and the capability flags for each signal
+# This can be used to iterate a test over every signal in a module
 print ("SIGNALS AVAILABLE:")
 for sig in dev_caps.get_signals():
     print ("Name:\t" + sig.name)
@@ -53,6 +55,7 @@ print ("")
 print ("")
 
 # Print out the list of signal groups, and the list of signals they control
+# Groups allow faster settings of blocks of signals, without needing to know all the individual names
 print ("SIGNALS GROUPS AVAILABLE:")
 for group in dev_caps.get_signal_groups():
     print ("Name:\t" + group.name)
@@ -64,6 +67,7 @@ print ("")
 print ("")
 
 # Print the sources on the module, and list their capabilities
+# Some modules have fewer sources available, or have different timing resolutions
 print ("SOURCES AVAILABLE:")
 for source in dev_caps.get_sources():
     print ("Name:\t" + source.name)
