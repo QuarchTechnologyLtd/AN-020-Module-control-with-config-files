@@ -16,15 +16,14 @@ Connect any Quarch breaker/hot-plug module and run the script
 
 ####################################
 '''
-from quarchpy.device import *
 from quarchpy.config_files import *
-from quarchpy.config_files import test_config_parser
+from quarchpy.device import *
 
 # Scan for devices
 allDevices = scanDevices("all")
 # Ask user to select one and connect to it
 dev_select = userSelectDevice (allDevices)    
-my_device = quarchDevice (dev_select)
+my_device = getQuarchDevice(dev_select)
 
 # Find the correct config file for the connected module (breaker modules only for now)
 # We're passing the module connection here, the idn_string can be supplied instead if the module is not currently attached (simulation/demo mode)
